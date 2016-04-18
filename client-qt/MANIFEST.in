@@ -1,2 +1,0 @@
-recursive-include sflvault/clientqt/images *.png
-recursive-include sflvault/clientqt/i18n *.qm

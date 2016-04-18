@@ -40,7 +40,7 @@ sed -i "s/port = 6555/port = 5767/" test-functional.ini
 openssl genrsa 1024 > host.key ; chmod 400 host.key ; openssl req -new -x509 -config ../test-certif-config -nodes -sha1 -days 365 -key host.key > host.cert ; cat host.cert host.key > host.pem ; chmod 400 host.pem
 
 echo "Launching server..."
-python -m sflvault.server test-functional.ini &
+python -m sflvault_server test-functional.ini &
 sleep 3
 
 echo "Running functional tests"

@@ -41,8 +41,7 @@ from unittest import TestCase
 import threading
 
 from sflvault.client import SFLvaultClient
-from sflvault.lib.vault import SFLvaultAccess
-from sflvault.server import SFLvaultServer
+from sflvault_server import SFLvaultServer
 import logging
 log = logging.getLogger(__name__)
 __all__ = ['url_for', 'TestController', 'setUp', 'tearDown']
@@ -68,7 +67,7 @@ def tearDown():
 def getConfFileAdmin():
     if (os.path.exists(confile)):
         os.unlink(confile)
-    return confile 
+    return confile
 
 
 def setUp():
@@ -82,7 +81,7 @@ def setUp():
 
     os.environ['SFLVAULT_IN_TEST'] = 'true'
 
- 
+
     server = SFLvaultServer(test_file)
 
     t = threading.Thread(target=server.start_server)
@@ -123,7 +122,7 @@ class TestController(TestCase):
 
     def __init__(self, *args, **kwargs):
         TestCase.__init__(self, *args, **kwargs)
-        
+
     def getConfFileUser(self):
         if os.path.exists(userconfile):
             os.unlink(userconfile)
@@ -147,10 +146,10 @@ class TestController(TestCase):
 
             globs['vault'] = vault
             passphrase = u'test'
-            username = u'admin'    
+            username = u'admin'
 
             def givepass():
-                return passphrase        
+                return passphrase
             globs['vault'].set_getpassfunc(givepass)
             log.warn("testing user setup")
             globs['vault'].user_setup(username, 'http://localhost:6555/vault/rpc', passphrase)
