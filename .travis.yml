@@ -4,4 +4,4 @@ services:
   - docker
 
 script:
-  - docker-compose run --rm web sh -c "pipenv install -d tox-travis && tox"
+  - docker-compose run --rm web sh -c "pipenv install -d tox-travis && pipenv run tox"
