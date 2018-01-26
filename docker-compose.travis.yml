@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  web:
+    environment:
+      - USE_HOT_RELOAD=${USE_HOT_RELOAD-true}
+      - DJANGO_INSTALL_PATH=/code/
+      - DJANGO_SETTINGS_MODULE=sflvault_server.settings.dev
+      - TRAVIS=$TRAVIS
+      - TRAVIS_JOB_ID=$TRAVIS_JOB_ID
+      - TRAVIS_BRANCH=$TRAVIS_BRANCH
