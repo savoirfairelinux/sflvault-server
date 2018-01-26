@@ -1,0 +1,7 @@
+sudo: required
+
+services:
+  - docker
+
+script:
+  - docker-compose run --rm web sh -c "pipenv install -d tox-travis && pipenv run tox"
