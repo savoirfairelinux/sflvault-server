@@ -18,7 +18,4 @@ python_version = "3.6"
 
 [dev-packages]
 
-coverage = "*"
-"flake8" = "*"
-isort = "*"
-coveralls = "*"
+tox-travis = "*"
