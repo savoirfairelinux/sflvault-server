@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 
-Django = ">=2.0,<2.1"
+django = ">=2.0,<2.1"
 djangorestframework = "*"
 
 
@@ -19,3 +19,6 @@ python_version = "3.6"
 [dev-packages]
 
 coverage = "*"
+"flake8" = "*"
+isort = "*"
+coveralls = "*"
