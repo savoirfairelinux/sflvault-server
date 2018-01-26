@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 
-django = ">=2.0,<2.1"
+Django = ">=2.0,<2.1"
 djangorestframework = "*"
 
 
@@ -18,5 +18,4 @@ python_version = "3.6"
 
 [dev-packages]
 
-tox-travis = "*"
 coverage = "*"
