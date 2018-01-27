@@ -5,9 +5,10 @@ services:
 
 before_script:
   - docker-compose -f docker-compose.yml -f docker-compose.travis.yml up -d
+  - docker-compose exec web sh -c "apk add --no-cache git"
+  - docker-compose exec web sh -c "pipenv install -d tox"
 
 script:
-  - docker-compose exec web sh -c "pipenv install -d tox"
   - docker-compose exec web sh -c "pipenv run tox"
 
 after_script:
