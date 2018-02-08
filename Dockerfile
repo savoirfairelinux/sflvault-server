@@ -1,7 +1,7 @@
 FROM python:3-alpine3.6
 
 RUN apk add --no-cache \
-    bash libpq gettext \
+    bash libpq gettext gcc musl-dev \
     postgresql-dev uwsgi uwsgi-python3
 
 WORKDIR /code

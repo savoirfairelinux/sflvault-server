@@ -9,6 +9,7 @@ verify_ssl = true
 
 django = ">=2.0,<2.1"
 djangorestframework = "*"
+"psycopg2" = "*"
 
 
 [requires]
