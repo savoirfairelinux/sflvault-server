@@ -9,7 +9,9 @@ __all__ = ['Customer', 'ServiceGroup', 'Service', 'ServiceGroupMembership']
 class Customer(models.Model):
     name = models.CharField(max_length=255)
     created = models.DateField(auto_now_add=True, blank=True)
-    created_by = models.ForeignKey(users.Account, related_name="customers", on_delete=models.CASCADE)
+    created_by = models.ForeignKey(
+        users.Account, related_name="customers", on_delete=models.CASCADE
+    )
 
     class Meta:
         app_label = "vaultsrv"
@@ -22,12 +24,22 @@ class Customer(models.Model):
 
 
 class ServiceGroup(models.Model):
-    customer = models.ForeignKey(Customer, related_name='service_groups', on_delete=models.CASCADE)
+    customer = models.ForeignKey(
+        Customer, related_name='service_groups', on_delete=models.CASCADE
+    )
     name = models.CharField(max_length=255)
     created = models.DateField(auto_now_add=True, blank=True)
-    fqdn = models.CharField(max_length=255, verbose_name=_("Name or domain"), null=True, blank=True)
-    ip = models.CharField(max_length=39, null=True, blank=True, help_text=_("IP address of the server"))
-    location = models.CharField(max_length=255, null=True, blank=True, help_text=_("Physical place"))
+    fqdn = models.CharField(
+        max_length=255, verbose_name=_("Name or domain"), null=True,
+        blank=True
+    )
+    ip = models.CharField(
+        max_length=39, null=True, blank=True,
+        help_text=_("IP address of the server")
+    )
+    location = models.CharField(
+        max_length=255, null=True, blank=True, help_text=_("Physical place")
+    )
     notes = models.TextField(null=True, blank=True)
 
     class Meta:
@@ -41,14 +53,19 @@ class ServiceGroup(models.Model):
 
 
 class Service(models.Model):
-    service_group = models.ForeignKey(ServiceGroup, related_name="services", on_delete=models.CASCADE)
+    service_group = models.ForeignKey(
+        ServiceGroup, related_name="services", on_delete=models.CASCADE
+    )
     parent = models.ForeignKey(
-        ServiceGroup, null=True, blank=True, on_delete=models.SET_NULL, help_text=_("The group this service belongs to")
+        ServiceGroup, null=True, blank=True, on_delete=models.SET_NULL,
+        help_text=_("The group this service belongs to")
     )
     created = models.DateField(auto_now_add=True, blank=True)
     updated = models.DateField(auto_now=True, blank=True)
     url = models.URLField()
-    metadata = JSONField(blank=True, default={}, help_text=_("Accept JSON format"))
+    metadata = JSONField(
+        blank=True, default={}, help_text=_("Accept JSON format")
+    )
     notes = models.TextField(null=True, blank=True)
     secret = models.TextField(help_text=_("Service's password"))
 
@@ -63,8 +80,14 @@ class Service(models.Model):
 
 
 class ServiceGroupMembership(models.Model):
-    group = models.ForeignKey(users.AccountGroup, related_name="service_group_memberships", on_delete=models.CASCADE)
-    service = models.ForeignKey(Service, related_name="service_group_memberships", on_delete=models.CASCADE)
+    group = models.ForeignKey(
+        users.AccountGroup, related_name="service_group_memberships",
+        on_delete=models.CASCADE
+    )
+    service = models.ForeignKey(
+        Service, related_name="service_group_memberships",
+        on_delete=models.CASCADE
+    )
     cryptsymkey = models.TextField(verbose_name=_("Cryptography sym key"))
 
     class Meta:

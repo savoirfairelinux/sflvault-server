@@ -8,8 +8,12 @@ __all__ = ['Account', 'AccountGroup', 'GroupMembership']
 
 class Account(models.Model):
     user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)
-    groups = models.ManyToManyField('AccountGroup', through='GroupMembership', related_name="accounts")
-    department = models.CharField(max_length=255, verbose_name=_("Company department"))
+    groups = models.ManyToManyField(
+        'AccountGroup', through='GroupMembership', related_name="accounts"
+    )
+    department = models.CharField(
+        max_length=255, verbose_name=_("Company department")
+    )
     pubkey = models.TextField(verbose_name=_("Public key"))
 
     class Meta:
