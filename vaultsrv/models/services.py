@@ -10,7 +10,8 @@ class Customer(models.Model):
     name = models.CharField(max_length=255)
     created = models.DateField(auto_now_add=True, blank=True)
     created_by = models.ForeignKey(
-        users.Account, related_name="customers", on_delete=models.CASCADE
+        users.Account, related_name="customers", null=True, blank=True,
+        on_delete=models.SET_NULL
     )
 
     class Meta:
