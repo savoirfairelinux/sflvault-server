@@ -1,7 +1,8 @@
 from django.contrib.postgres.fields import JSONField
 from django.db import models
-from vaultsrv.models import users
 from django.utils.translation import ugettext_lazy as _
+
+from vaultsrv.models import users
 
 __all__ = ['Customer', 'ServiceGroup', 'Service', 'ServiceGroupMembership']
 

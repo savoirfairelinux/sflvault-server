@@ -7,6 +7,11 @@ RUN_STATIC=0
 RUN_MIGRATE=1
 RUN_NOTHING=0
 
+until PGPASSWORD=$POSTGRES_PASSWORD psql -h "db" -U "postgres" -c '\q'; do
+  >&2 echo "Postgres is unavailable - sleeping"
+  sleep 1
+done
+
 set -e
 
 cd /code
