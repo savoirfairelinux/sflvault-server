@@ -2,7 +2,8 @@ FROM python:3-alpine3.6
 
 RUN apk add --no-cache \
     bash libpq gettext gcc musl-dev \
-    postgresql-dev uwsgi uwsgi-python3
+    postgresql-dev uwsgi uwsgi-python3 \
+    graphviz ttf-freefont
 
 WORKDIR /code
 COPY ./ /code/

@@ -13,6 +13,8 @@ engines:
 ratings:
    paths:
    - "**/*.py"
-exclude_paths:
+exclude_patterns:
 - "**/tests.py"
 - "docs/**/*"
+- "**/migrations/*"
+- "sflvault_server/settings/*.py"
