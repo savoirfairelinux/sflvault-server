@@ -7,7 +7,9 @@ __all__ = ['Account', 'AccountGroup', 'GroupMembership']
 
 
 class Account(models.Model):
-    user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)
+    user = models.OneToOneField(
+        get_user_model(), on_delete=models.CASCADE, related_name='account'
+    )
     groups = models.ManyToManyField(
         'AccountGroup', through='GroupMembership', related_name="accounts"
     )
@@ -51,6 +53,7 @@ class GroupMembership(models.Model):
         app_label = "vaultsrv"
         verbose_name = _('Group membership')
         verbose_name_plural = _('Group memberships')
+        unique_together = (('account', 'account_group'),)
 
     def __str__(self):
         return "{} [{}]".format(self.account, self.account_group)
