@@ -42,7 +42,12 @@ class CustomerAdmin(admin.ModelAdmin):
     @staticmethod
     def _set_current_account_as_created_by(request):
         data = getattr(request, request.method).copy()
-        data['created_by'] = request.user.account.pk
+        # If the account is created by createsuperuser
+        # the account relation DoesNotExist
+        try:
+            data['created_by'] = request.user.account.pk
+        except Account.DoesNotExist:
+            data['created_by'] = None
         setattr(request, request.method, data)
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
