@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 
-django = ">=2.0,<2.1"
+django = ">=1.11,<2.1"
 djangorestframework = "*"
 "psycopg2" = "*"
 django-extensions = "*"

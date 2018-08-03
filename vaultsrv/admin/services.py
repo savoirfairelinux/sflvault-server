@@ -3,7 +3,11 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
 from vaultsrv.models import (
-    Account, Customer, ServiceGroup, Service, ServiceGroupMembership
+    Account,
+    Customer,
+    Service,
+    ServiceGroup,
+    ServiceGroupMembership
 )
 
 
