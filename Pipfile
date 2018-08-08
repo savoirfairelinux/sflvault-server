@@ -1,24 +1,19 @@
 [[source]]
-
 url = "https://pypi.python.org/simple"
 name = "pypi"
 verify_ssl = true
 
-
 [packages]
-
 django = ">=1.11,<2.1"
 djangorestframework = "*"
 "psycopg2" = "*"
 django-extensions = "*"
 pyparsing = "*"
 pydot = "*"
+factory-boy = "*"
 
 [requires]
-
 python_version = "3.6"
 
-
 [dev-packages]
-
 tox-travis = "*"
